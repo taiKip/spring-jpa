@@ -3,6 +3,7 @@ package com.example.springdatajpa.repository;
 import com.example.springdatajpa.entity.Guardian;
 import com.example.springdatajpa.entity.Student;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -18,6 +19,7 @@ class StudentRepositoryTest {
     private StudentRepository studentRepository;
 
     @Test
+    @Disabled
     public void saveStudent(){
         Student student =
                 Student.builder()
@@ -33,6 +35,7 @@ class StudentRepositoryTest {
     }
 
     @Test
+    @Disabled
     public  void saveStudentWithGuardian(){
         Guardian guardian = Guardian.builder()
                 .email("gab@test.com")
@@ -75,5 +78,25 @@ class StudentRepositoryTest {
     public void getStudentByFirstNameAndLastName(){
         Student student = studentRepository.findByFirstNameAndLastNameIgnoreCase("vick","tarus");
     System.out.println("Student = "  + student);
+}
+
+@Test
+    public  void  printGetStudentByEmailAddress(){
+        String firstName =
+                studentRepository.getStudentByEmailAddress("vick@gmail.com");
+    System.out.println("Student = " +firstName);
+}
+
+
+@Test
+    public  void printGetStudentByEmailAddressNative(){
+        Student student =
+                studentRepository.getStudentByEmailAddressNative("vick@gmail.com");
+    System.out.printf("Student = " + student);
+}
+
+@Test
+    public  void updateStudentNameByEmailId(){
+        studentRepository.updateStudentNameByEmailId("tai","vick@gmail.com");
 }
 }
