@@ -31,7 +31,7 @@ public class Teacher {
 
     /**@desc One to many relationship between teacher and course,teacher can teach many courses
      * we create a join column in the courses table and place the ids of the teachers*/
-    @OneToMany(
+  /*  @OneToMany(
             cascade = CascadeType.ALL
 
     )
@@ -39,5 +39,5 @@ public class Teacher {
             name = "teacher_id",
             referencedColumnName = "teacherId"
     )
-    private List<Course> courses;
+    private List<Course> courses;*/
 }

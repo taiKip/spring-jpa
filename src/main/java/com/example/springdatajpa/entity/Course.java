@@ -3,6 +3,9 @@ package com.example.springdatajpa.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -31,5 +34,30 @@ public class Course {
             mappedBy = "course"
     )
     private CourseMaterial courseMaterial;
+@ManyToOne(
+        cascade = CascadeType.ALL
+)
+@JoinColumn(
+        name ="teacher_id",
+        referencedColumnName = "teacherId"
+)
+    private Teacher teacher;
 
+@ManyToMany
+@JoinTable( /**@desc create new table and the two columns that need to be referred*/
+        name ="student_course_map",
+        joinColumns = @JoinColumn(
+                name="course_id",
+                referencedColumnName = "courseId"
+        ),
+        inverseJoinColumns = @JoinColumn(
+                name = "student_id",
+                referencedColumnName = "studentId"
+        )
+)
+private List<Student> students;
+public void addStudents (Student student){
+    if(students == null) students = new ArrayList<>();
+    students.add(student);
+}
 }

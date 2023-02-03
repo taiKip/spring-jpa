@@ -31,7 +31,8 @@ public class CourseMaterial {
      * -*/
     @OneToOne(
             cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER
+            fetch = FetchType.EAGER,
+            optional = false //whenever you try to save a course,course_material is mandatory
     )
     @JoinColumn( /**@desc which particular column we  can join these two tables*/
             name = "course_id",/**@desc name of column should be course_id, course material table will have an extra column ie course_id which

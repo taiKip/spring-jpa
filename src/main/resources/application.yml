@@ -15,7 +15,7 @@ spring:
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 server:
-  port: 3000
+  port: 3002
   error:
     include-binding-errors: always
     include-message: always
